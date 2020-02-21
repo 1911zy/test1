@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org"> 
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>查看物流信息</title>
+<style>
+
+table td{
+border: 1px solid red;
+height: 30px;
+}
+</style>
+ </head>
+ <body>
+ <form action="http://localhost:8080/toDetailsOfTransport" name="addForm"  onsubmit="return check()">
+ 	单号:<input type="text" name="num" id="n1" placeholder="请输入单号">
+  	快递公司:<input type="text" name="company" id="n2" placeholder="输入公司快递代码,不区分大小写">
+  	查询:<input type="submit">
+  </form>
+  <table>
+           <thead>
+               <tr>
+                  <th>时间</th>
+                  <th>站点</th>
+                  <th>操作</th>
+               </tr>
+           </thead>
+           
+  
+           <tbody>
+              <tr th:each="g : ${log}">
+                 <td th:text="${g.acceptTime}"></td>
+                 <td th:text="${g.acceptStation}"></td>
+                 <td><a th:href="@{/abc/doFindAll}">查询</a></td>
+              </tr>
+           </tbody>
+       </table>
+ </body>
+</html>
